@@ -65,9 +65,11 @@ class JcmdNamespaceRPCInterface:
 
         pid = process.pid
 
-        proc = subprocess.Popen(['jcmd', 'pid'] + list(cmd),
+        proc = subprocess.Popen(
+            ['jcmd', pid] + list(cmd),
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT)
+            stderr=subprocess.STDOUT
+        )
 
         out, _ = proc.communicate()
 

@@ -13,14 +13,14 @@ class JcmdControllerPlugin(ControllerPluginBase):
     def do_jcmd(self, args):
         args = shlex.split(args)
         if len(args) < 2:
-            return self.help_cache_clear()
+            return self.help_jcmd()
 
         value = self.jcmd.jcmd(args[0], args[1:])
         self._pprint(value)
 
-    def help_cache_clear(self):
+    def help_jcmd(self):
         self.ctl.output("jcmd <name> <args>\t"
-                        "Run jcmd")
+                        "Run jcmd against service")
 
     def _pprint(self, what):
         pprinted = pprint.pformat(what)
